@@ -35,6 +35,10 @@ with the new chain Metropolized to keep its stationary law, to improve mixing or
 cycle with a random perfect matching, the mixing behaviour is now well understood; see Hermon, Sly and
 Sousi~\cite{HSS} and the references there. It is also known that adding an edge can lower the spectral gap of the
 random walk; Eldan, R\'acz and Schramm~\cite{ERS} show that this happens with substantial probability in random graphs.
+For the combinatorial Laplacian, where an added edge never lowers the algebraic connectivity, Deng, Chang and
+Yang~\cite{DCY} study a single weighted chord on a weighted cycle, give exact formulas for the effective resistances
+and the Kirchhoff index after the chord is added, and show that under bounded conductances near-antipodal chords that
+balance the resistances of the two arcs are near-optimal for the algebraic connectivity.
 
 Here we treat the smallest case completely: a single chord on an even cycle. Write $n=2m\ge4$, label the vertices
 $\mathbb Z/n$, give every cycle edge conductance $1$, and add one chord $\{0,k\}$, $2\le k\le m$, of conductance $w>0$
@@ -197,7 +201,9 @@ The paper is part of the Math Brain project, whose public repository is
 \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
 \begin{thebibliography}{99}
-\bibitem{Diaconis} P.~Diaconis, Some things we've learned (about Markov chain Monte Carlo), Bernoulli 19 (2013),
+\bibitem{DCY} J.~Deng, L.~Chang, Q.~Yang, Single-chord augmentation of weighted cycles for algebraic connectivity
+and network coherence, preprint, 2026, arXiv:2605.24479.
+\bibitem{Diaconis}P.~Diaconis, Some things we've learned (about Markov chain Monte Carlo), Bernoulli 19 (2013),
 1294--1305, arXiv:1309.7754.
 \bibitem{ERS} R.~Eldan, M.~Z.~R\'acz, T.~Schramm, Braess's paradox for the spectral gap in random graphs and
 delocalization of eigenvectors, Random Structures Algorithms 50 (2017), 584--611.
