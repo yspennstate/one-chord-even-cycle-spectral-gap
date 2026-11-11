@@ -1,0 +1,11 @@
+{
+  "method": "two arc continuants, Schur elimination, custom Fraction polynomial arithmetic and Sturm chains",
+  "graphs": 84,
+  "coefficient_equalities": 1092,
+  "independent_sturm_counts": 84,
+  "independent_comparison_root_counts": 168,
+  "antipodal": 21,
+  "strict": 63,
+  "seconds": 0.40750000000116415,
+  "passed": true
+}

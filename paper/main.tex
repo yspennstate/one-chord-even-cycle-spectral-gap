@@ -1,0 +1,214 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\emergencystretch=2em
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Which chord of an even cycle preserves its spectral gap}
+\author{Yitzchak Shmalo}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+Add one edge of conductance $w>0$ to the cycle $C_n$, $n=2m\ge4$, and run the random walk on the resulting weighted
+graph. We show that the spectral gap of the walk is largest exactly when the new edge joins two antipodal vertices,
+and that in this case the gap equals $1-\cos(\pi/m)$, the gap of the cycle itself, for every $w$. Every other chord
+strictly lowers the gap, with an explicit bound. If instead the walk is Metropolized so that its stationary law stays
+uniform, every chord, antipodal or not, strictly lowers the gap. These are one-edge cases of questions of Diaconis
+about which added edges speed up a random walk most.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Diaconis~\cite[Section~5, Question~4]{Diaconis} asks, for a connected regular graph, which perfect matching should
+be added to make the random walk mix fastest, and, for a general reversible chain, which weighted edge should be added,
+with the new chain Metropolized to keep its stationary law, to improve mixing or the spectral gap the most. For the
+cycle with a random perfect matching, the mixing behaviour is now well understood; see Hermon, Sly and
+Sousi~\cite{HSS} and the references there. It is also known that adding an edge can lower the spectral gap of the
+random walk; Eldan, R\'acz and Schramm~\cite{ERS} show that this happens with substantial probability in random graphs.
+
+Here we treat the smallest case completely: a single chord on an even cycle. Write $n=2m\ge4$, label the vertices
+$\mathbb Z/n$, give every cycle edge conductance $1$, and add one chord $\{0,k\}$, $2\le k\le m$, of conductance $w>0$
+(by rotation and reflection every chord has this form). Let $d_i$ be the weighted degrees, $A$ the weighted adjacency
+matrix, $P=D^{-1}A$ the random walk, and
+\[
+\gamma=1-\lambda_2(P)=\inf_f\frac{\mathcal E(f)}{\operatorname{Var}_D(f)},\qquad
+\mathcal E(f)=\sum_{\{i,j\}}c_{ij}(f_i-f_j)^2,\qquad \operatorname{Var}_D(f)=\min_{c\in\mathbb R}\sum_id_i(f_i-c)^2,
+\]
+where the sum runs over edges, each counted once, and the infimum over nonconstant $f$. The cycle alone has
+$\gamma(C_n)=1-\cos(2\pi/n)$. Throughout, $a=1-\cos(\pi/m)=1-\cos(2\pi/n)$.
+
+\begin{theorem}\label{thm:walk}
+For every $w>0$, $\gamma(C_{2m}+w\{0,m\})=a$. For $2\le k<m$,
+\begin{equation}\label{eq:strict}
+\gamma(C_n+w\{0,k\})\le\frac{a}{1+\frac{2w}{n+w}\cos^2(\pi k/n)}<a .
+\end{equation}
+In particular the antipodal chords, and only they, maximise the spectral gap among all single chords of a given
+weight, and no chord raises the gap of the cycle.
+\end{theorem}
+
+For the second question, take as proposal the walk $P$ above and as target the uniform law. The Metropolis--Hastings
+kernel is $K(i,j)=P(i,j)\min\{1,P(j,i)/P(i,j)\}=c_{ij}/\max(d_i,d_j)$ for $i\ne j$, with the diagonal chosen so that
+rows sum to one. It is symmetric, so the uniform law is stationary.
+
+\begin{theorem}\label{thm:mh}
+For every chord $\{0,k\}$, $2\le k\le m$, and every $w>0$, with $b=w/(2+w)$, $\theta=2\pi/n$ and $\alpha=\pi k/n$,
+\[
+1-\lambda_2(K)\le a-\frac{4b}{n}\bigl(a^2\cos^2\alpha+\sin^2\theta\,\sin^2\alpha\bigr)<a .
+\]
+So the Metropolized chain is strictly slower, in the sense of the spectral gap, than the walk on the cycle without the
+chord, whichever chord is added.
+\end{theorem}
+
+The antipodal case is the point of \cref{thm:walk}: the upper bound for the other chords comes from one test function,
+but the equality needs a lower bound on the whole Rayleigh quotient. The question for full matchings remains open.
+
+\section{The random walk}
+
+\begin{lemma}\label{lem:path}
+If $g_0,\dots,g_m$ are real with $g_0=g_m=0$, then $\sum_{i=0}^{m-1}(g_{i+1}-g_i)^2\ge2a\sum_{i=1}^{m-1}g_i^2$.
+\end{lemma}
+
+\begin{proof}
+The left side is $g^{\top}Tg$ for the $(m-1)\times(m-1)$ tridiagonal matrix $T$ with $2$ on the diagonal and $-1$ next
+to it. Its eigenvectors are $(\sin(\pi ji/m))_i$, with eigenvalues $2-2\cos(\pi j/m)$, $1\le j\le m-1$, the smallest
+being $2a$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:walk}, antipodal chord]
+Let $k=m$, so that $d_0=d_m=2+w$ and $d_i=2$ otherwise. The half-turn $(Tf)(i)=f(i+m)$ preserves the graph and the
+degrees, so it preserves $\mathcal E$ and the $D$-inner product. Write $f=f_++f_-$ with $Tf_\pm=\pm f_\pm$. The two
+parts are orthogonal for both forms, and $\sum_id_if_-(i)=0$, so
+\[
+\mathcal E(f)=\mathcal E(f_+)+\mathcal E(f_-),\qquad \operatorname{Var}_D(f)=\operatorname{Var}_D(f_+)+\sum_id_if_-(i)^2 .
+\]
+
+Even part. Put $t=f_+(0)=f_+(m)$ and $g=f_+-t$. The chord contributes nothing to $\mathcal E(f_+)$, and $g$ vanishes at
+both ends of each of the two arcs from $0$ to $m$. \Cref{lem:path} on both arcs gives
+$\mathcal E(f_+)\ge2a\sum_ig_i^2$. Since $g$ vanishes where $d_i\ne2$,
+$\operatorname{Var}_D(f_+)\le\sum_id_ig_i^2=2\sum_ig_i^2$, so $\mathcal E(f_+)\ge a\operatorname{Var}_D(f_+)$.
+
+Odd part. Put $s=f_-(0)=-f_-(m)$. The function $f_-$ has $\sum_if_-(i)=0$, so the Poincar\'e inequality of the cycle,
+whose Laplacian has second eigenvalue $2-2\cos(2\pi/n)=2a$, gives
+$\mathcal E_{\mathrm{cyc}}(f_-)\ge2a\sum_if_-(i)^2$. The chord adds $w(2s)^2$. Since $a\le1$,
+\[
+\mathcal E(f_-)\ge2a\sum_if_-(i)^2+4ws^2\ge a\Bigl(2\sum_if_-(i)^2+2ws^2\Bigr)=a\sum_id_if_-(i)^2 .
+\]
+Adding the two parts, $\mathcal E(f)\ge a\operatorname{Var}_D(f)$, so $\gamma\ge a$.
+
+For the reverse inequality take $f(i)=\sin(\pi i/m)$. It vanishes at $0$ and $m$, so the chord does not affect
+$(D-A)f$ and $(D-A)f=2af=aDf$. Also $\sum_id_if(i)=2\sum_if(i)=0$. Hence $f$ is an eigenvector of $P$ with eigenvalue
+$1-a$ that is orthogonal to the constants, and $\gamma\le a$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:walk}, other chords]
+Let $2\le k<m$, $\theta=2\pi/n$, $t=\cos(\pi k/n)>0$ and $f(i)=\cos(\theta(i-k/2))$. Then $f(0)=f(k)=t$, so the
+chord contributes no energy, and $f$ is an eigenvector of the cycle Laplacian with eigenvalue $2a$, with
+$\sum_if(i)=0$ and $\sum_if(i)^2=n/2$. Hence $\mathcal E(f)=na$. With $\sum_id_if(i)^2=n+2wt^2$,
+$\sum_id_if(i)=2wt$ and $\sum_id_i=2n+2w$,
+\[
+\operatorname{Var}_D(f)=n+2wt^2-\frac{(2wt)^2}{2n+2w}=n\Bigl(1+\frac{2wt^2}{n+w}\Bigr),
+\]
+and $\gamma\le\mathcal E(f)/\operatorname{Var}_D(f)$ is~\eqref{eq:strict}.
+\end{proof}
+
+\begin{remark}
+The same test function gives the bound~\eqref{eq:strict} for every chord of an odd cycle, with $a=1-\cos(2\pi/n)$, since
+the argument uses only $\cos(\pi k/n)>0$, which holds for $2\le k\le(n-1)/2$.
+\end{remark}
+
+\section{The Metropolized walk}
+
+\begin{proof}[Proof of \cref{thm:mh}]
+The chord endpoints have degree $2+w$ and every other vertex degree $2$. So $K$ has conductance $1/(2+w)$ on the four
+cycle edges at the chord endpoints (call this set $S$), $1/2$ on the other cycle edges, and $w/(2+w)=b$ on the chord.
+Since $1/(2+w)=\tfrac12-\tfrac b2$, for every real $f$,
+\[
+f^{\top}(I-K)f=\tfrac12\mathcal E_{\mathrm{cyc}}(f)-\tfrac b2\sum_{\{i,j\}\in S}(f_i-f_j)^2+b(f_0-f_k)^2 .
+\]
+The four edges of $S$ are distinct because $2\le k\le n-2$. Take again $f(i)=\cos(\theta i-\alpha)$, which has mean
+zero, $\sum_if(i)^2=n/2$, $\mathcal E_{\mathrm{cyc}}(f)=na$ and $f(0)=f(k)=\cos\alpha$. Its values at the neighbours
+of the endpoints are $f(\pm1)=f(k\mp1)$, equal to $\cos(\theta\mp\alpha)$, and a short computation gives
+\[
+\sum_{\{i,j\}\in S}(f_i-f_j)^2=2\bigl[(a\cos\alpha-\sin\theta\sin\alpha)^2+(a\cos\alpha+\sin\theta\sin\alpha)^2\bigr]
+=4\bigl(a^2\cos^2\alpha+\sin^2\theta\sin^2\alpha\bigr).
+\]
+Dividing $f^{\top}(I-K)f$ by $\sum_if(i)^2=n/2$ gives the bound. The bracket is positive because $a>0$ and
+$\sin\theta>0$ for $n\ge4$, so the bound is below $a$, the gap of the walk on $C_n$.
+\end{proof}
+
+\begin{remark}
+\Cref{thm:mh} fixes one natural proposal, the walk on the augmented graph. Diaconis's question allows any way of
+Metropolizing, and among the slower kernels of \cref{thm:mh} we do not determine the best chord.
+\end{remark}
+
+\begin{remark}
+Exact computations agree with both theorems. For even $n\le16$, every chord and $w\in\{1/2,1,5\}$, the characteristic
+polynomial of the pencil $(D-A)-xD$ was computed in rational arithmetic in two independent ways, by direct
+determinants and by eliminating the two path interiors, and the position of its second root was certified by Sturm
+sequences: $21$ equalities and $63$ strict inequalities, as predicted. Floating-point checks for even $n\le40$, five
+weights from $0.01$ to $1000$, and every chord, and for odd $n\le29$, agree with~\eqref{eq:strict} and
+\cref{thm:mh}. The code is in the repository listed below.
+\end{remark}
+
+\section*{Acknowledgements and funding}
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math
+Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent
+memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results,
+coordinate who works on what, and audit each other's work. For more on the details behind the Brain and Math Brain, see
+the Math Brain paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework
+repository~\cite{BrainFramework}.
+
+The research presented in this paper was supported by the European Research Council (ERC) under the European Union's
+Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of
+the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus
+Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant
+4101/25). Computational resources were provided in part by Google Cloud through its education credits program (credit
+530550103).
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital.
+These entities are included in the funding declaration above.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics, and its
+results were developed with the Brain~\cite{BrainFramework} and Math Brain~\cite{MathBrainRepo}. In September and
+November 2026 Claude agents (Anthropic) and Codex agents running OpenAI's GPT-6.1, connected to the Brain, studied
+Diaconis's question. A Codex agent proved both theorems and wrote the exact checks; Claude agents audited the proofs
+line by line and checked two algebraic steps of the proof of \cref{thm:mh} in Lean, and Claude Opus 5.5 (Anthropic) re-derived the proofs,
+checked them numerically, and prepared the manuscript. These checks are not peer review. The author directed the work
+and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\section*{Code and data availability}
+Code and exact computations are at
+
+\url{https://github.com/yspennstate/one-chord-even-cycle-spectral-gap}.
+
+The paper is part of the Math Brain project, whose public repository is
+\url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
+
+\begin{thebibliography}{99}
+\bibitem{Diaconis} P.~Diaconis, Some things we've learned (about Markov chain Monte Carlo), Bernoulli 19 (2013),
+1294--1305, arXiv:1309.7754.
+\bibitem{ERS} R.~Eldan, M.~Z.~R\'acz, T.~Schramm, Braess's paradox for the spectral gap in random graphs and
+delocalization of eigenvectors, Random Structures Algorithms 50 (2017), 584--611.
+\bibitem{HSS} J.~Hermon, A.~Sly, P.~Sousi, Universality of cutoff for graphs with an added random matching, Ann.
+Probab. 50 (2022), 203--240, arXiv:2008.08564.
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
+\url{https://github.com/yspennstate/math-brain-public}.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research},
+October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026,
+\url{https://github.com/yspennstate/brain-framework-public}.
+\end{thebibliography}
+
+\end{document}
