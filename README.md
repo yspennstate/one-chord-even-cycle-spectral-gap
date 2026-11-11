@@ -22,8 +22,9 @@ The question for a whole perfect matching remains open.
     a matching on C_8 that helps at weight 1 and hurts at weight 10, the degree-variance identity).
   - `explore.py` - floating point, even n = 4..40, five weights from 0.01 to 1000. Writes `evidence/exploration.json`.
   - `numeric_check.py` - an independent floating-point check of both theorems' bounds and of the odd-cycle remark.
-- `lean/` - Lean 4 with Mathlib: the four-edge identity and the chord comparison used in the proof of Theorem 2.
-  The spectral statements themselves are not formalised.
+- `lean/` - Lean 4 with Mathlib: the path lemma (Lemma 3, used in the proof of Theorem 1), and the four-edge
+  identity and the chord comparison used in the proof of Theorem 2. The spectral statements themselves are not
+  formalised.
 
 Run the checks from the repository root, for example
 
