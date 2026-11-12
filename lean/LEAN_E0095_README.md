@@ -13,12 +13,12 @@ identity with the positive ground state s(i) = sin(πi/m): `vertex_sum` regroups
 recurrence s(i-1) + s(i+1) = 2 cos(π/m) s(i) gives each interior vertex the contribution λ f(i)^2, and `edge_bound`
 bounds each edge by (f(i) - f(i+1))^2, the difference being (a s_b - b s_a)^2 / (s_a s_b) ≥ 0.
 
-## `E0095_MHIdentity.lean`: two algebraic steps in the proof of Theorem 2
+## `E0095_MHIdentity.lean`: one algebraic step in each of Theorems 1 and 2
 
-- `edge_sum`: for the test function f(i) = cos(θ(i - k/2)), the four cycle edges at the ends of the chord contribute
+- `edge_sum` (Theorem 2): for the test function f(i) = cos(θ(i - k/2)), the four cycle edges at the ends of the chord contribute
   2[(cos(θ-α) - cos α)^2 + (cos(θ+α) - cos α)^2] = 4[(1 - cos θ)^2 cos^2 α + sin^2 θ sin^2 α].
   Proof: expand cos(θ ∓ α) and `ring`.
-- `chord_energy`: for w ≥ 0, 2(1 - cos θ) w s^2 ≤ 4 w s^2, since cos θ ≥ -1.
+- `chord_energy` (odd sector of Theorem 1): for w ≥ 0, 2(1 - cos θ) w s^2 ≤ 4 w s^2, since cos θ ≥ -1.
 
 ## Building
 

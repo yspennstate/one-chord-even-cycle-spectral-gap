@@ -39,7 +39,7 @@ random walk; Eldan, R\'acz and Schramm~\cite{ERS} show that this happens with su
 For the combinatorial Laplacian an added edge never lowers the algebraic connectivity, and the choice of edges
 that raise it most has been studied by Ghosh and Boyd~\cite{GB} and by Kim~\cite{Kim}. For a single weighted chord
 on a weighted cycle, Deng et al.~\cite{DCY} give exact formulas for the effective resistances
-and the Kirchhoff index after the chord is added, and show that under bounded conductances near-antipodal chords that
+and the Kirchhoff index after the chord is added, and show that under bounded conductances and a small resistance discrepancy near-antipodal chords that
 balance the resistances of the two arcs are near-optimal for the algebraic connectivity.
 
 Here we treat the smallest case completely: a single chord on an even cycle. Write $n=2m\ge4$, label the vertices
@@ -63,7 +63,8 @@ weight, and no chord raises the gap of the cycle.
 \end{theorem}
 
 For the second question, take as proposal the walk $P$ above and as target the uniform law. The Metropolis--Hastings
-kernel is $K(i,j)=P(i,j)\min\{1,P(j,i)/P(i,j)\}=c_{ij}/\max(d_i,d_j)$ for $i\ne j$, with the diagonal chosen so that
+kernel is $K(i,j)=P(i,j)\min\{1,P(j,i)/P(i,j)\}=c_{ij}/\max(d_i,d_j)$ for every edge $ij$, $K(i,j)=0$ for distinct
+$i,j$ that are not adjacent, with the diagonal chosen so that
 rows sum to one. It is symmetric, so the uniform law is stationary.
 
 \begin{theorem}\label{thm:mh}
@@ -153,8 +154,8 @@ $\sin\theta>0$ for $n\ge4$, so the bound is below $a$, the gap of the walk on $C
 \end{proof}
 
 \begin{remark}
-\Cref{thm:mh} fixes one natural proposal, the walk on the augmented graph. Diaconis's question allows any way of
-Metropolizing, and among the slower kernels of \cref{thm:mh} we do not determine the best chord.
+\Cref{thm:mh} fixes one natural proposal, the walk on the augmented graph. Diaconis's question does not say how the chain is to be
+Metropolized, and among the slower kernels of \cref{thm:mh} we do not determine the best chord.
 \end{remark}
 
 \begin{remark}
@@ -190,7 +191,8 @@ The paper comes out of Math Brain, an ongoing project on the use of AI systems f
 results were developed with the Brain~\cite{BrainFramework} and Math Brain~\cite{MathBrainRepo}. In September and
 November 2026 Claude agents (Anthropic) and Codex agents running OpenAI's GPT-6.1, connected to the Brain, studied
 Diaconis's question. A Codex agent proved both theorems and wrote the exact checks; Claude agents audited the proofs
-line by line and checked two algebraic steps of the proof of \cref{thm:mh} in Lean, and Claude Opus 5.5 (Anthropic) re-derived the proofs,
+line by line and checked in Lean \cref{lem:path} with its equality case, the edge-sum identity in the proof of
+\cref{thm:mh} and the chord-energy comparison in the proof of \cref{thm:walk}, and Claude Opus 5.5 (Anthropic) re-derived the proofs,
 checked them numerically, and prepared the manuscript. These checks are not peer review. The author directed the work
 and is responsible for the content of the paper and for decisions concerning its dissemination.
 
@@ -203,7 +205,7 @@ The paper is part of the Math Brain project, whose public repository is
 \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
 \begin{thebibliography}{99}
-\bibitem{DCY} J.~Deng, Liu Chang, Q.~Yang, Single-chord augmentation of weighted cycles for algebraic connectivity
+\bibitem{DCY} J.~Deng, L.~Chang and Q.~Yang, Single-chord augmentation of weighted cycles for algebraic connectivity
 and network coherence, preprint, 2026, arXiv:2605.24479.
 \bibitem{Diaconis}P.~Diaconis, Some things we've learned (about Markov chain Monte Carlo), Bernoulli 19 (2013),
 1294--1305, doi:10.3150/12-BEJSP09, arXiv:1309.7754.
